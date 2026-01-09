@@ -1,4 +1,4 @@
-import { globalStyles } from "@/styles/global-styles";
+import { Colors } from "@/constants/Colors";
 import { useFonts } from "expo-font";
 import { Slot } from "expo-router";
 import { StatusBar } from "expo-status-bar";
@@ -15,7 +15,7 @@ const RootLayout = () => {
   }
 
   return (
-    <View style={globalStyles.background}>
+    <View style={{ backgroundColor: Colors.background, flex: 1 }}>
       <Slot />
       <StatusBar style="light" />
     </View>
