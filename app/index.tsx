@@ -38,6 +38,53 @@ const CalculatorApp = () => {
           onPress={() => {}}
         ></CalculatorButton>
       </View>
+
+      <View style={globalStyles.row}>
+        <CalculatorButton label="7" onPress={() => {}}></CalculatorButton>
+        <CalculatorButton label="8" onPress={() => {}}></CalculatorButton>
+        <CalculatorButton label="9" onPress={() => {}}></CalculatorButton>
+        <CalculatorButton
+          label="x"
+          color={Colors.orange}
+          onPress={() => {}}
+        ></CalculatorButton>
+      </View>
+
+      <View style={globalStyles.row}>
+        <CalculatorButton label="4" onPress={() => {}}></CalculatorButton>
+        <CalculatorButton label="5" onPress={() => {}}></CalculatorButton>
+        <CalculatorButton label="6" onPress={() => {}}></CalculatorButton>
+        <CalculatorButton
+          label="-"
+          color={Colors.orange}
+          onPress={() => {}}
+        ></CalculatorButton>
+      </View>
+
+      <View style={globalStyles.row}>
+        <CalculatorButton label="1" onPress={() => {}}></CalculatorButton>
+        <CalculatorButton label="2" onPress={() => {}}></CalculatorButton>
+        <CalculatorButton label="3" onPress={() => {}}></CalculatorButton>
+        <CalculatorButton
+          label="+"
+          color={Colors.orange}
+          onPress={() => {}}
+        ></CalculatorButton>
+      </View>
+
+      <View style={globalStyles.row}>
+        <CalculatorButton
+          doubleSize
+          label="0"
+          onPress={() => {}}
+        ></CalculatorButton>
+        <CalculatorButton label="." onPress={() => {}}></CalculatorButton>
+        <CalculatorButton
+          label="="
+          color={Colors.orange}
+          onPress={() => {}}
+        ></CalculatorButton>
+      </View>
     </View>
   );
 };
