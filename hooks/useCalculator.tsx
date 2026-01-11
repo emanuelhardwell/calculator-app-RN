@@ -19,6 +19,41 @@ export const useCalculator = () => {
     setFormula(number);
   }, [number]);
 
+  useEffect(() => {
+    if (lastOperation.current) {
+      const firstFormulaPart = formula.split(" ").at(0);
+      setFormula(`${firstFormulaPart} ${lastOperation.current} ${number}`);
+    } else {
+      setFormula(number);
+    }
+  }, [number]);
+
+  const setLastNumber = () => {
+    //TODO: Calculate result
+    if (number.endsWith(".")) {
+      return setPrevNumber(number.slice(0, -1));
+    }
+    setPrevNumber(number);
+    setNumber("0");
+  };
+
+  const operationAdd = () => {
+    setLastNumber();
+    lastOperation.current = Operator.add;
+  };
+  const operationSubtract = () => {
+    setLastNumber();
+    lastOperation.current = Operator.subtract;
+  };
+  const operationMultiply = () => {
+    setLastNumber();
+    lastOperation.current = Operator.multiply;
+  };
+  const operationDivide = () => {
+    setLastNumber();
+    lastOperation.current = Operator.divide;
+  };
+
   const clean = () => {
     setFormula("0");
     setNumber("0");
@@ -85,5 +120,9 @@ export const useCalculator = () => {
     clean,
     toogleSign,
     deleteLast,
+    operationAdd,
+    operationSubtract,
+    operationMultiply,
+    operationDivide,
   };
 };

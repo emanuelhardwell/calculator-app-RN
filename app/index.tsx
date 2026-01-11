@@ -7,14 +7,28 @@ import React from "react";
 import { View } from "react-native";
 
 const CalculatorApp = () => {
-  const { formula, buildNumber, clean, toogleSign, deleteLast } =
-    useCalculator();
+  const {
+    formula,
+    buildNumber,
+    clean,
+    toogleSign,
+    deleteLast,
+    operationAdd,
+    prevNumber,
+    operationSubtract,
+    operationMultiply,
+    operationDivide,
+  } = useCalculator();
 
   return (
     <View style={globalStyles.calculatorContainer}>
       <View>
         <TextCustom variant="h1">{formula}</TextCustom>
-        <TextCustom variant="h2">1,000,000,000</TextCustom>
+        {formula === prevNumber ? (
+          <TextCustom variant="h2"> </TextCustom>
+        ) : (
+          <TextCustom variant="h2">{prevNumber}</TextCustom>
+        )}
       </View>
 
       <View style={globalStyles.row}>
@@ -39,7 +53,7 @@ const CalculatorApp = () => {
         <CalculatorButton
           label="÷"
           color={Colors.orange}
-          onPress={() => {}}
+          onPress={operationDivide}
         ></CalculatorButton>
       </View>
 
@@ -59,7 +73,7 @@ const CalculatorApp = () => {
         <CalculatorButton
           label="x"
           color={Colors.orange}
-          onPress={() => {}}
+          onPress={operationMultiply}
         ></CalculatorButton>
       </View>
 
@@ -79,7 +93,7 @@ const CalculatorApp = () => {
         <CalculatorButton
           label="-"
           color={Colors.orange}
-          onPress={() => {}}
+          onPress={operationSubtract}
         ></CalculatorButton>
       </View>
 
@@ -99,7 +113,7 @@ const CalculatorApp = () => {
         <CalculatorButton
           label="+"
           color={Colors.orange}
-          onPress={() => {}}
+          onPress={operationAdd}
         ></CalculatorButton>
       </View>
 
