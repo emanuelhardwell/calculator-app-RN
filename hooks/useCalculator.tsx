@@ -15,9 +15,9 @@ export const useCalculator = () => {
   const lastOperation = useRef<Operator>(undefined);
 
   useEffect(() => {
-    //TODO: calcular subresultado
-    setFormula(number);
-  }, [number]);
+    const result = calculateSubResult();
+    setPrevNumber(result.toString());
+  }, [formula]);
 
   useEffect(() => {
     if (lastOperation.current) {
@@ -28,8 +28,38 @@ export const useCalculator = () => {
     }
   }, [number]);
 
+  const calculateSubResult = () => {
+    const [value1, operator, value2] = formula.split(" ");
+
+    const number1 = Number(value1);
+    const number2 = Number(value2);
+
+    if (isNaN(number2)) return number1;
+
+    switch (operator) {
+      case Operator.add:
+        return number1 + number2;
+      case Operator.subtract:
+        return number1 - number2;
+      case Operator.multiply:
+        return number1 * number2;
+      case Operator.divide:
+        return number1 / number2;
+
+      default:
+        throw new Error(`Operator ${operator} not valid`);
+    }
+  };
+
+  const calculateResult = () => {
+    const result = calculateSubResult();
+    setFormula(result.toString());
+    setPrevNumber("0");
+    lastOperation.current = undefined;
+  };
+
   const setLastNumber = () => {
-    //TODO: Calculate result
+    calculateResult();
     if (number.endsWith(".")) {
       return setPrevNumber(number.slice(0, -1));
     }
@@ -84,8 +114,6 @@ export const useCalculator = () => {
   };
 
   const buildNumber = (numberString: string) => {
-    console.log({ numberString });
-
     if (number.includes(".") && numberString === ".") return;
 
     if (number.startsWith("0") || number.startsWith("-0")) {
@@ -124,5 +152,6 @@ export const useCalculator = () => {
     operationSubtract,
     operationMultiply,
     operationDivide,
+    calculateResult,
   };
 };

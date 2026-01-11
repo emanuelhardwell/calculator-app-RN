@@ -18,6 +18,7 @@ const CalculatorApp = () => {
     operationSubtract,
     operationMultiply,
     operationDivide,
+    calculateResult,
   } = useCalculator();
 
   return (
@@ -130,7 +131,7 @@ const CalculatorApp = () => {
         <CalculatorButton
           label="="
           color={Colors.orange}
-          onPress={() => {}}
+          onPress={calculateResult}
         ></CalculatorButton>
       </View>
     </View>
